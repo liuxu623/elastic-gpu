@@ -35,6 +35,20 @@ spec:
             properties:
               index:
                 type: integer
+              links:
+                items:
+                  properties:
+                    index:
+                      type: integer
+                    types:
+                      items:
+                        type: string
+                      type: array
+                  required:
+                  - index
+                  - types
+                  type: object
+                type: array
               memory:
                 format: int64
                 type: integer

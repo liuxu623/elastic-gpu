@@ -188,13 +188,42 @@ type GPU struct {
 }
 
 type GPUSpec struct {
-	Index    int    `json:"index"`
-	UUID     string `json:"uuid,omitempty"`
-	Model    string `json:"model,omitempty"`
-	Path     string `json:"path,omitempty"`
-	Memory   uint64 `json:"memory,omitempty"`
-	NodeName string `json:"nodeName,omitempty"`
+	Index    uint      `json:"index"`
+	UUID     string    `json:"uuid,omitempty"`
+	Model    string    `json:"model,omitempty"`
+	Path     string    `json:"path,omitempty"`
+	Memory   uint64    `json:"memory,omitempty"`
+	NodeName string    `json:"nodeName,omitempty"`
+	Links    []P2PLink `json:"links,omitempty"`
 }
+
+type P2PLink struct {
+	Index uint          `json:"index"`
+	Types []P2PLinkType `json:"types"`
+}
+
+type P2PLinkType string
+
+const (
+	P2PLinkCrossCPU     P2PLinkType = "SYS"
+	P2PLinkSameCPU      P2PLinkType = "NODE"
+	P2PLinkHostBridge   P2PLinkType = "PHB"
+	P2PLinkMultiSwitch  P2PLinkType = "PXB"
+	P2PLinkSingleSwitch P2PLinkType = "PIX"
+	P2PLinkSameBoard    P2PLinkType = "PSB"
+	SingleNVLINKLink    P2PLinkType = "NV1"
+	TwoNVLINKLinks      P2PLinkType = "NV2"
+	ThreeNVLINKLinks    P2PLinkType = "NV3"
+	FourNVLINKLinks     P2PLinkType = "NV4"
+	FiveNVLINKLinks     P2PLinkType = "NV5"
+	SixNVLINKLinks      P2PLinkType = "NV6"
+	SevenNVLINKLinks    P2PLinkType = "NV7"
+	EightNVLINKLinks    P2PLinkType = "NV8"
+	NineNVLINKLinks     P2PLinkType = "NV9"
+	TenNVLINKLinks      P2PLinkType = "NV10"
+	ElevenNVLINKLinks   P2PLinkType = "NV11"
+	TwelveNVLINKLinks   P2PLinkType = "NV12"
+)
 
 type GPUStatus struct {
 	State       string                  `json:"state,omitempty"`
